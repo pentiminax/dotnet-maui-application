@@ -56,8 +56,8 @@ public class ProductService
 
     private static string GetNutriScoreFilter(int tagId)
     {
-        var nutriScore = Preferences.Get("NutriScore", "NONE");
+        var nutriScore = Preferences.Get("NutriScore", "ALL");
 
-        return ("NONE" == nutriScore) ? string.Empty : $"tagtype_{tagId}=nutrition_grades&tag_contains_{tagId}=contains&tag_{tagId}={nutriScore}";
+        return ("ALL" == nutriScore) ? string.Empty : $"tagtype_{tagId}=nutrition_grades&tag_contains_{tagId}=contains&tag_{tagId}={nutriScore}";
     }
 }

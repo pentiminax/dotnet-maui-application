@@ -9,7 +9,7 @@ public partial class SettingsPage : ContentPage
 
 	protected override void OnAppearing()
 	{
-		var nutriScore = Preferences.Get("NutriScore", "NONE");
+		var nutriScore = Preferences.Get("NutriScore", "ALL");
 
 		var radioButtons = nutriScoreStackLayout.Children.Where(c => c is RadioButton);
 

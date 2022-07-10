@@ -5,14 +5,20 @@
              x:Class="FoodSearch.View.SettingsPage"
              x:DataType="viewmodel:SettingsViewModel"
              Title="{Binding Title}">
-    <Grid Padding="10" RowDefinitions="Auto, Auto">
 
-        <Frame>
-            <Grid Padding="0" ColumnDefinitions="100, *">
-                <Label Text="Nutri-Score :" VerticalOptions="Center" />
-                <HorizontalStackLayout x:Name="nutriScoreStackLayout" Grid.Column="1">
+    <Grid Padding="5" RowDefinitions="Auto, Auto">
+
+        <Frame Padding="10">
+            <Grid RowDefinitions="Auto, Auto">
+                <Label Text="Nutri-Score" 
+                       HorizontalOptions="CenterAndExpand" 
+                       VerticalOptions="Center" />
+                <HorizontalStackLayout x:Name="nutriScoreStackLayout" 
+                               HorizontalOptions="Center"
+                               Padding="0" 
+                               Grid.Row="1">
                     <RadioButton Content="Tous"
-                                 Value="NONE"
+                                 Value="ALL"
                                  GroupName="NutriScore"
                                  CheckedChanged="OnNutriScoreCheckedChanged"/>
                     <RadioButton Content="A"
@@ -36,7 +42,6 @@
                                  GroupName="NutriScore"
                                  CheckedChanged="OnNutriScoreCheckedChanged"/>
                 </HorizontalStackLayout>
-
             </Grid>
         </Frame>
 
