@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:FoodSearch.Model"
+             xmlns:viewmodel="clr-namespace:FoodSearch.ViewModel"
+             x:Class="FoodSearch.View.MainPage"
+             x:DataType="viewmodel:ProductsViewModel"
+             Title="{Binding Title}">
+
+    <Grid ColumnDefinitions="*, *"
+          ColumnSpacing="5"
+          RowDefinitions="*, Auto">
+
+        <RefreshView Grid.ColumnSpan="2"
+                     Command="{Binding GetRandomProductsCommand}"
+                     IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView x:Name="productsCollection" 
+                            BackgroundColor="Transparent" 
+                            ItemsSource="{Binding Products}"
+                            SelectionMode="None">
+
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center" 
+                                 HorizontalOptions="Center"
+                                 HeightRequest="200"
+                                 WidthRequest="200"
+                                 IsVisible="{Binding IsNotBusy}">
+                        <Label Text="Aucun produit trouvé"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="{OnIdiom Desktop=1, Default=1}" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Product">
+                        <Grid Padding="5">
+                            <Frame HeightRequest="125" Padding="0">
+                                
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProductsViewModel}}, Path=GoToDetailsCommand}" />
+                                </Frame.GestureRecognizers>
+
+                                <Grid Padding="0" ColumnDefinitions="110, 160, *">
+
+                                    <Image Aspect="AspectFit"
+                                       Source="{Binding ImageUrl}"
+                                       WidthRequest="96"
+                                       HeightRequest="96"/>
+
+                                    <VerticalStackLayout Grid.Column="1" Padding="10" VerticalOptions="Center">
+                                        <Label Text="{Binding ProductName}" />
+                                        <Label Text="{Binding Brands}"/>
+                                    </VerticalStackLayout>
+
+                                    <Image Grid.Column="2"
+                                           Aspect="AspectFit"
+                                           Source="{Binding NustriscoreGradeImage}"
+                                           WidthRequest="72"
+                                           HeightRequest="72"/>
+
+                                </Grid>
+
+                            </Frame>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+    </Grid>
+
+</ContentPage>

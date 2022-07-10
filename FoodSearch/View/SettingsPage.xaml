@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:FoodSearch.ViewModel"
+             x:Class="FoodSearch.View.SettingsPage"
+             x:DataType="viewmodel:SettingsViewModel"
+             Title="{Binding Title}">
+    <Grid Padding="10" RowDefinitions="Auto, Auto">
+
+        <Frame>
+            <Grid Padding="0" ColumnDefinitions="100, *">
+                <Label Text="Nutri-Score :" VerticalOptions="Center" />
+                <HorizontalStackLayout x:Name="nutriScoreStackLayout" Grid.Column="1">
+                    <RadioButton Content="Tous"
+                                 Value="NONE"
+                                 GroupName="NutriScore"
+                                 CheckedChanged="OnNutriScoreCheckedChanged"/>
+                    <RadioButton Content="A"
+                                 Value="A"
+                                 GroupName="NutriScore"
+                                 CheckedChanged="OnNutriScoreCheckedChanged"/>
+                    <RadioButton Content="B"
+                                 Value="B"
+                                 GroupName="NutriScore"
+                                 CheckedChanged="OnNutriScoreCheckedChanged"/>
+                    <RadioButton Content="C"
+                                 Value="C"
+                                 GroupName="NutriScore"
+                                 CheckedChanged="OnNutriScoreCheckedChanged"/>
+                    <RadioButton Content="D"
+                                 Value="D"
+                                 GroupName="NutriScore"
+                                 CheckedChanged="OnNutriScoreCheckedChanged"/>
+                    <RadioButton Content="E"
+                                 Value="E"
+                                 GroupName="NutriScore"
+                                 CheckedChanged="OnNutriScoreCheckedChanged"/>
+                </HorizontalStackLayout>
+
+            </Grid>
+        </Frame>
+
+    </Grid>
+</ContentPage>
