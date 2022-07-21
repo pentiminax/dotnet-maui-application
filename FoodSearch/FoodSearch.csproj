@@ -65,10 +65,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview4" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="View\DetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
