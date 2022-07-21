@@ -1,5 +1,4 @@
-﻿using FoodSearch.Model;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 
 namespace FoodSearch.Services;
 
@@ -54,7 +53,7 @@ public class ProductService
 
     private static string GetNutriScoreFilter(int tagId)
     {
-        var nutriScore = Preferences.Get("NutriScore", "ALL");
+        var nutriScore = Settings.NutriScore;
 
         return ("ALL" == nutriScore) ? string.Empty : $"tagtype_{tagId}=nutrition_grades&tag_contains_{tagId}=contains&tag_{tagId}={nutriScore}";
     }

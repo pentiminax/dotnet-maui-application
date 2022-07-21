@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FoodSearch.Model;
+﻿namespace FoodSearch.Model;
 
 public class Settings
 {
-    public static bool FirstRun
+    public static string NutriScore
     {
-        get => Preferences.Get(nameof(FirstRun), true);
-        set => Preferences.Set(nameof(FirstRun), value);
+        get => Preferences.Get(nameof(NutriScore), "ALL");
+        set => Preferences.Set(nameof(NutriScore), value);
     }
-
 }

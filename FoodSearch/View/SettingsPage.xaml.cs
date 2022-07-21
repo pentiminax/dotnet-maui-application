@@ -29,6 +29,6 @@ public partial class SettingsPage : ContentPage
 	{
 		var nutriScore = ((RadioButton)sender).Value.ToString();
 
-		Preferences.Set("NutriScore", nutriScore);
+		Settings.NutriScore = nutriScore;
 	}
 }
