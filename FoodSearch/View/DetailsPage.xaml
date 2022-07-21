@@ -32,7 +32,7 @@
 
             </Grid>
 
-            <Button Text="Show on Open Food Facts"
+            <Button Text="Voir sur Open Food Facts"
                     Command="{Binding OpenProductCommand}"
                     CommandParameter="{Binding Product}"
                     HorizontalOptions="Center"
