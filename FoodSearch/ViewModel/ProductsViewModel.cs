@@ -10,6 +10,8 @@ public partial class ProductsViewModel : BaseViewModel
 
     public ObservableCollection<Product> Products { get; } = new();
 
+    public ObservableCollection<Product> SearchedProducts { get; } = new();
+
     public bool FirstRun { get; set; } = true;
 
     [ObservableProperty]
@@ -17,6 +19,9 @@ public partial class ProductsViewModel : BaseViewModel
 
     [ObservableProperty]
     string searchTerm;
+
+    [ObservableProperty]
+    string searchedTitle;
 
     public ProductsViewModel(ProductService productService)
     {
@@ -36,8 +41,7 @@ public partial class ProductsViewModel : BaseViewModel
 
             var products = await productService.GetRandomProductsAsync();
 
-            if (Products.Count != 0)
-                Products.Clear();
+            Products.Clear();
 
             foreach (var product in products)
                 Products.Add(product);
@@ -64,14 +68,15 @@ public partial class ProductsViewModel : BaseViewModel
         {
             IsBusy = true;
 
-            Title = SearchTerm;
+            SearchedTitle = SearchTerm;
+            Title = SearchedTitle;
 
-            Products.Clear();
+            SearchedProducts.Clear();
 
             var products = await productService.SearchProductsAsync(SearchTerm);                
 
             foreach (var product in products)
-                Products.Add(product);
+                SearchedProducts.Add(product);
 
             SearchTerm = null;
         }

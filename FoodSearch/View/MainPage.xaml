@@ -16,7 +16,6 @@
                      IsRefreshing="{Binding IsRefreshing}">
             <CollectionView x:Name="productsCollection" 
                             BackgroundColor="Transparent" 
-                            ItemsSource="{Binding Products}"
                             SelectionMode="None">
 
                 <CollectionView.EmptyView>

@@ -16,6 +16,8 @@ public partial class MainPage : ContentPage
 
     protected override async void OnAppearing()
     {
+        productsCollection.ItemsSource = viewModel.Products;
+
         if (viewModel.FirstRun && viewModel.GetRandomProductsCommand.CanExecute(null))
         {
             await viewModel.GetRandomProductsCommand.ExecuteAsync(null);
@@ -31,9 +33,16 @@ public partial class MainPage : ContentPage
         {
             await viewModel.SearchProductsCommand.ExecuteAsync(null);
         }
+
+        if (Parent is ShellSection && ((ShellSection)Parent).Route == nameof(SearchPage))
+        {
+            viewModel.Title = viewModel.SearchedTitle;
+            productsCollection.ItemsSource = viewModel.SearchedProducts;
+        }
         else
         {
-            Title = "Produits";
+            viewModel.Title = "Produits";
+            productsCollection.ItemsSource = viewModel.Products;
         }
 
         base.OnNavigatedTo(args);

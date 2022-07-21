@@ -10,11 +10,13 @@
         <ShellContent
         Title="Produits"
         Icon="product.png"
+        Route="MainPage"    
         ContentTemplate="{DataTemplate view:MainPage}" />
 
         <ShellContent
         Title="Rechercher"
         Icon="search.png"
+        Route="SearchPage"
         ContentTemplate="{DataTemplate view:SearchPage}" />
 
         <ShellContent
